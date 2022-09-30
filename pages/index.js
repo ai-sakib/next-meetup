@@ -18,6 +18,19 @@ const DUMMY_MEETUPS = [
             'This is a second, amazing meetup which you definitely should not miss. It will be a lot of fun!',
     },
 ]
-export default function Home() {
-    return <MeetupList meetups={DUMMY_MEETUPS} />
+
+export const getStaticProps = async () => {
+    // fetch data from an API
+    return {
+        props: {
+            meetups: DUMMY_MEETUPS,
+        },
+        revalidate: 1,
+    }
 }
+
+const HomePage = props => {
+    return <MeetupList meetups={props.meetups} />
+}
+
+export default HomePage

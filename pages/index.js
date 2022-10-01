@@ -4,24 +4,20 @@ import Head from 'next/head'
 import { MongoClient } from 'mongodb'
 import MeetupList from './../components/meetups/MeetupList'
 
-const DUMMY_MEETUPS = [
-    {
-        id: 'm1',
-        title: 'This is a first meetup',
-        image: 'https://secure.meetupstatic.com/next/images/indexPage/category2.webp?w=1920',
-        address: 'Some address 5, 12345 Some City',
-        description:
-            'This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!',
-    },
-    {
-        id: 'm2',
-        title: 'This is a second meetup',
-        image: 'https://secure.meetupstatic.com/next/images/indexPage/category2.webp?w=1920',
-        address: 'Some address 10, 12345 Some City',
-        description:
-            'This is a second, amazing meetup which you definitely should not miss. It will be a lot of fun!',
-    },
-]
+const HomePage = props => {
+    return (
+        <Fragment>
+            <Head>
+                <title>React Meetups</title>
+                <meta
+                    name='description'
+                    content='Browse a huge list of highly active React meetups!'
+                />
+            </Head>
+            <MeetupList meetups={props.meetups} />
+        </Fragment>
+    )
+}
 
 export const getStaticProps = async () => {
     // fetch data from an API
@@ -45,21 +41,6 @@ export const getStaticProps = async () => {
         },
         revalidate: 1,
     }
-}
-
-const HomePage = props => {
-    return (
-        <Fragment>
-            <Head>
-                <title>React Meetups</title>
-                <meta
-                    name='description'
-                    content='Browse a huge list of highly active React meetups!'
-                />
-            </Head>
-            <MeetupList meetups={props.meetups} />
-        </Fragment>
-    )
 }
 
 export default HomePage

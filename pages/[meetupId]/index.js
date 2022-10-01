@@ -13,7 +13,12 @@ const MeetupDetails = props => {
                     content={props.meetupData.description}
                 />
             </Head>
-            <MeetupDetail {...props.meetupData} />
+            <MeetupDetail
+                image={props.meetupData.image}
+                title={props.meetupData.title}
+                address={props.meetupData.address}
+                description={props.meetupData.description}
+            />
         </Fragment>
     )
 }

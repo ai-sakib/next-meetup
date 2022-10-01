@@ -4,20 +4,19 @@ import { MongoClient, ObjectId } from 'mongodb'
 import MeetupDetail from '../../components/meetups/MeetupDetail'
 
 const MeetupDetails = props => {
+    const meetupData = props.meetupData
+
     return (
         <Fragment>
             <Head>
-                <title>{props.meetupData.title}</title>
-                <meta
-                    name='description'
-                    content={props.meetupData.description}
-                />
+                <title>{meetupData?.title}</title>
+                <meta name='description' content={meetupData?.description} />
             </Head>
             <MeetupDetail
-                image={props.meetupData.image}
-                title={props.meetupData.title}
-                address={props.meetupData.address}
-                description={props.meetupData.description}
+                image={meetupData?.image}
+                title={meetupData?.title}
+                address={meetupData?.address}
+                description={meetupData?.description}
             />
         </Fragment>
     )
